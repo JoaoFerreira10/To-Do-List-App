@@ -11,7 +11,21 @@ import UIKit
 class SecondViewController: UIViewController {
 
     
-
+    
+    //var db = UserDefaults.standard.object(forKey:"tasks")
+    
+    
+    @IBOutlet weak var textField: UITextField!
+    
+    @IBAction func Save(_ sender: AnyObject) {
+        
+         UserDefaults.standard.set(textField.text, forKey: "tasks")
+    }
+    
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -22,7 +36,6 @@ class SecondViewController: UIViewController {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-
 
 }
 

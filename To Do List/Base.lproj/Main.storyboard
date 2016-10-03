@@ -7,7 +7,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--First-->
+        <!--List-->
         <scene sceneID="hNz-n2-bh7">
             <objects>
                 <viewController id="9pv-A4-QxB" customClass="FirstViewController" customModule="To_Do_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -19,9 +19,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <tableView clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="abU-xD-ZWl">
-                                <frame key="frameInset" minY="28" width="375" height="590"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="abU-xD-ZWl">
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cell" id="gyq-hg-juT">
@@ -40,14 +38,20 @@
                             </tableView>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstItem="4ug-Mw-9AY" firstAttribute="top" secondItem="abU-xD-ZWl" secondAttribute="bottom" id="3J7-lB-stQ"/>
+                            <constraint firstAttribute="trailing" secondItem="abU-xD-ZWl" secondAttribute="trailing" id="cpw-dA-ejD"/>
+                            <constraint firstItem="abU-xD-ZWl" firstAttribute="leading" secondItem="tsR-hK-woN" secondAttribute="leading" id="l03-tc-DTA"/>
+                            <constraint firstItem="abU-xD-ZWl" firstAttribute="top" secondItem="Ia1-K6-d13" secondAttribute="bottom" constant="8" id="pfT-X0-ges"/>
+                        </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="First" image="first" id="acW-dT-cKf"/>
+                    <tabBarItem key="tabBarItem" title="List" image="first" id="acW-dT-cKf"/>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="W5J-7L-Pyd" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="749.60000000000002" y="-320.68965517241384"/>
         </scene>
-        <!--Second-->
+        <!--Add task-->
         <scene sceneID="wg7-f3-ORb">
             <objects>
                 <viewController id="8rJ-Kc-sve" customClass="SecondViewController" customModule="To_Do_List" customModuleProvider="target" sceneMemberID="viewController">
@@ -59,57 +63,37 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Insert task" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8gh-p1-ngZ">
-                                <frame key="frameInset" minX="16" minY="50" width="343" height="44"/>
-                                <fontDescription key="fontDescription" type="system" weight="medium" pointSize="34"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Insert a task" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="gxs-MZ-beo">
+                                <fontDescription key="fontDescription" type="system" pointSize="34"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="QSP-WI-8n3">
-                                <frame key="frameInset" minX="16" minY="102" width="343" height="30"/>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="32y-Y1-ym5">
                                 <nil key="textColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                 <textInputTraits key="textInputTraits"/>
-                                <connections>
-                                    <action selector="txtField:" destination="8rJ-Kc-sve" eventType="editingDidEnd" id="q9J-sY-MMR"/>
-                                </connections>
                             </textField>
-                            <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NeL-tA-Orj">
-                                <frame key="frameInset" minX="156" minY="160" width="62" height="30"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="18"/>
-                                <state key="normal" title="Submit"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uDy-B6-tF5">
+                                <state key="normal" title="Save"/>
+                                <connections>
+                                    <action selector="Save:" destination="8rJ-Kc-sve" eventType="touchUpInside" id="Ohi-Mh-2Gi"/>
+                                </connections>
                             </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
-                            <constraint firstItem="QSP-WI-8n3" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="3vJ-lr-nPX"/>
-                            <constraint firstItem="QSP-WI-8n3" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="4Gw-ps-sUC"/>
-                            <constraint firstItem="NeL-tA-Orj" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="Ams-vJ-R1q"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="DKb-t1-1G7"/>
-                            <constraint firstItem="QSP-WI-8n3" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="Dpn-zC-Wje"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="E7L-Rd-UKJ"/>
-                            <constraint firstAttribute="trailing" secondItem="8gh-p1-ngZ" secondAttribute="trailing" constant="16" id="Hpw-as-Agm"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="JOx-da-AuG"/>
-                            <constraint firstItem="QSP-WI-8n3" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="KPy-2L-SwT"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="SEx-cx-7GD"/>
-                            <constraint firstItem="QSP-WI-8n3" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="UAZ-hb-bex"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="WRa-OH-kht"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leading" constant="16" id="Wir-k7-tUx"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="WyE-Zw-G3q"/>
-                            <constraint firstItem="QSP-WI-8n3" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="YAs-jh-O7f"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="aJf-vg-a0o"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="30" id="jJB-rg-S8R"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="lwo-2q-1Xx"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="centerY" secondItem="QS5-Rx-YEW" secondAttribute="centerY" id="pKu-BL-xpA"/>
-                            <constraint firstItem="8gh-p1-ngZ" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="rdy-Ky-AXs"/>
-                            <constraint firstItem="QSP-WI-8n3" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="tIf-7w-GtD"/>
-                            <constraint firstItem="QSP-WI-8n3" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="tdL-h3-nQt"/>
-                            <constraint firstItem="NeL-tA-Orj" firstAttribute="top" secondItem="QSP-WI-8n3" secondAttribute="bottom" constant="28" id="wdB-UL-34s"/>
+                            <constraint firstItem="uDy-B6-tF5" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="DzG-6y-8Jy"/>
+                            <constraint firstItem="uDy-B6-tF5" firstAttribute="top" secondItem="32y-Y1-ym5" secondAttribute="bottom" constant="35" id="JDJ-fc-Mdd"/>
+                            <constraint firstItem="32y-Y1-ym5" firstAttribute="leading" secondItem="QS5-Rx-YEW" secondAttribute="leadingMargin" id="Zml-pu-P6e"/>
+                            <constraint firstItem="32y-Y1-ym5" firstAttribute="trailing" secondItem="QS5-Rx-YEW" secondAttribute="trailingMargin" id="bQU-4d-lmp"/>
+                            <constraint firstItem="gxs-MZ-beo" firstAttribute="centerX" secondItem="QS5-Rx-YEW" secondAttribute="centerX" id="jWj-w6-EhN"/>
+                            <constraint firstItem="32y-Y1-ym5" firstAttribute="top" secondItem="gxs-MZ-beo" secondAttribute="bottom" constant="26" id="kn7-jI-7fe"/>
+                            <constraint firstItem="gxs-MZ-beo" firstAttribute="top" secondItem="L7p-HK-0SC" secondAttribute="bottom" constant="43" id="xKn-1A-f3a"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="Second" image="second" id="cPa-gy-q4n"/>
+                    <tabBarItem key="tabBarItem" title="Add task" image="second" id="cPa-gy-q4n"/>
                     <connections>
-                        <outlet property="btn" destination="NeL-tA-Orj" id="vQD-8D-yHQ"/>
+                        <outlet property="textField" destination="32y-Y1-ym5" id="I02-hw-YT7"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="4Nw-L8-lE0" sceneMemberID="firstResponder"/>

@@ -23,10 +23,19 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         let	cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         
-        cell.textLabel?.text = "Joao"
+        let tsk = UserDefaults.standard.object(forKey: "tasks")
+        
+        
+        if let y = tsk as? String {
+        
+        	cell.textLabel?.text = y
+        }
         
         return cell
     }
+    
+    
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
