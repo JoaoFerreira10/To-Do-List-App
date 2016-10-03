@@ -8,18 +8,31 @@
 
 import UIKit
 
-class SecondViewController: UIViewController {
+class SecondViewController: UIViewController, UITextFieldDelegate {
 
     
-    
-    //var db = UserDefaults.standard.object(forKey:"tasks")
-    
+
     
     @IBOutlet weak var textField: UITextField!
     
     @IBAction func Save(_ sender: AnyObject) {
         
-         UserDefaults.standard.set(textField.text, forKey: "tasks")
+        let tsks = UserDefaults.standard.object(forKey: "tasks")
+        
+        var item: [String]
+        
+        if let itens = tsks as? [String] {
+        
+            item = itens
+            
+        	item.append(textField.text!)
+            
+        } else{
+            
+        	item = [textField.text!]
+        }
+        
+        UserDefaults.standard.set(item, forKey: "tasks")
     }
     
     

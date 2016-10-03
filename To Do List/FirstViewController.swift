@@ -11,35 +11,53 @@ import UIKit
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
+    var listTaks:NSMutableArray = []
+    
+    
+    @IBOutlet weak var table: UITableView!
     
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
-        return 1
+        return listTaks.count
     }
-    
     
 
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let	cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         
-        let tsk = UserDefaults.standard.object(forKey: "tasks")
+        var cl = ""
         
+        if let y = listTaks[indexPath.row] as? String {
         
-        if let y = tsk as? String {
-        
-        	cell.textLabel?.text = y
+        	//cell.textLabel?.text = y
+            cl = y
+        }else{
+        	//cell.textLabel?.text = " "
+            cl = " "
         }
         
+        cell.textLabel?.text = cl
         return cell
     }
     
     
 
-
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
+    }
+    
+    
+    override func viewDidAppear(_ animated: Bool) {
+        
+        let tsk = UserDefaults.standard.object(forKey: "tasks")
+        
+        if let a = tsk as? NSMutableArray {
+            listTaks = a
+        }
+        
+        table.reloadData()
     }
 
     override func didReceiveMemoryWarning() {
