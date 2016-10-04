@@ -11,38 +11,45 @@ import UIKit
 class FirstViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
     
-    var listTaks:NSMutableArray = []
+    var listTaks:[String] = []
     
     
     @IBOutlet weak var table: UITableView!
     
+    //number of rows
     public func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         return listTaks.count
     }
     
-
+    
+    //Delete of a task
+    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+        
+        if editingStyle == UITableViewCellEditingStyle.delete {
+            
+            listTaks.remove(at: indexPath.row)
+            
+            table.reloadData()
+            
+            UserDefaults.standard.set(listTaks, forKey: "tasks")
+            
+        }
+    }
+    
+    
     public func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
+        //new row
         let	cell = UITableViewCell(style: UITableViewCellStyle.default, reuseIdentifier: "Cell")
         
-        var cl = ""
+        cell.textLabel?.text = listTaks[indexPath.row]
         
-        if let y = listTaks[indexPath.row] as? String {
-        
-        	//cell.textLabel?.text = y
-            cl = y
-        }else{
-        	//cell.textLabel?.text = " "
-            cl = " "
-        }
-        
-        cell.textLabel?.text = cl
         return cell
     }
     
     
-
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -51,15 +58,11 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     
     override func viewDidAppear(_ animated: Bool) {
         
-        let tsk = UserDefaults.standard.object(forKey: "tasks")
-        
-        if let a = tsk as? NSMutableArray {
-            listTaks = a
-        }
+        listTaks = UserDefaults.standard.object(forKey: "tasks") as! [String]
         
         table.reloadData()
     }
-
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
