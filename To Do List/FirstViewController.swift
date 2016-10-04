@@ -49,7 +49,6 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
     }
     
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -62,6 +61,7 @@ class FirstViewController: UIViewController, UITableViewDataSource, UITableViewD
         
         table.reloadData()
     }
+    
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
